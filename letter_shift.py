@@ -1,7 +1,8 @@
 import sys
 
+bleh = "abcdefghijklmnopqrstuvwxyz"
+
 def letter_shift(plaintext, key, dir):
-	bleh = "abcdefghijklmnopqrstuvwxyz"
 	return bleh[(bleh.index(plaintext) + (dir * bleh.index(key))) % 26]
 
 def poly_cipher(type, text, key):
@@ -11,6 +12,7 @@ def poly_cipher(type, text, key):
 	else:
 		i = 1
 	for j in range(len(text)):
+
 		res += letter_shift(text[j], key[j % len(key)], i)
 	print(res)
 
@@ -22,4 +24,3 @@ if __name__ == "__main__":
 	text = str(sys.argv[2]).lower()
 	key = str(sys.argv[3]).lower()
 	poly_cipher(type, text, key)
-	print(type)
